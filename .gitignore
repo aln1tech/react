@@ -1,0 +1,30 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+
+### Node ###
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+jspm_packages
+dist
+
+# Optional npm cache directory
+.npm
+# NPM config file
+.npmrc
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
