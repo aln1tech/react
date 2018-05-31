@@ -4,11 +4,13 @@ var React = require('react');
 var AuthorApi = require('../../api/authorApi');
 
 var Authors = React.createClass({
-   render: function () {
-       return(
-           <div>
+    render: function () {
+        return (
+            <div>
 
-           </div>
-       )
-   }
+            </div>
+        )
+    }
 });
+
+module.exports = Authors;
