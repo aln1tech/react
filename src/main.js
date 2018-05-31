@@ -2,8 +2,9 @@ $ = jQuery = require('jquery');
 var React = require('react');
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
-
-(function(win) {
+var Header = require('./components/common/headerPage');
+var Author = require('./components/authors/authorsPage');
+(function (win) {
     "use strict";
     var App = React.createClass({
         render: function () {
@@ -12,11 +13,15 @@ var About = require('./components/about/aboutPage');
                 case 'about':
                     Child = About;
                     break;
+                case 'authors':
+                    Child = Author;
+                    break;
                 default:
                     Child = Home;
             }
             return (
                 <div>
+                    <Header/>
                     <Child/>
                 </div>
             )
