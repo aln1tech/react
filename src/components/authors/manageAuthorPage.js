@@ -10,7 +10,7 @@ var ManageAuthorPage = React.createClass({
             author: {id: '', firstName: '', lastName: ''}
         };
     },
-
+    
     setAuthorState: function (event) {
         var field = event.target.name;
         var value = event.target.value;
@@ -20,7 +20,8 @@ var ManageAuthorPage = React.createClass({
 
     render: function () {
         return (
-            <AuthorForm author={this.state.author} onChange={this.setAuthorState}/>
+            <AuthorForm author={this.state.author}
+            onChange={this.setAuthorState}/>
         );
     }
 });
