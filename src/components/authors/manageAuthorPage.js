@@ -13,8 +13,8 @@ var ManageAuthorPage = React.createClass({
     ],
 
     statics: {
-        willTransitionFrom:function (transition, component) {
-            if(component.state.dirty && !confirm('Leave without saving?')){
+        willTransitionFrom: function (transition, component) {
+            if (component.state.dirty && !confirm('Leave without saving?')) {
                 transition.abort();
             }
         }
@@ -27,16 +27,23 @@ var ManageAuthorPage = React.createClass({
         };
     },
 
-    authorFormValidation: function(event){
+    componentWillMount: function () {
+        var authorId = this.props.params.id; //from the path '/author:id'
+        if (authorId) {
+            this.setState({author: AuthorApi.getAuthorById(authorId)});
+        }
+    },
+
+    authorFormValidation: function (event) {
         var formIsValid = true;
         this.state.errors = {};
 
-        if(this.state.author.firstName.trim().length < 3){
+        if (this.state.author.firstName.trim().length < 3) {
             this.state.errors.firstName = 'First name must be at leas 3 characters.';
             formIsValid = false;
         }
 
-        if(this.state.author.lastName.trim().length < 3){
+        if (this.state.author.lastName.trim().length < 3) {
             this.state.errors.lastName = 'Last name must be at leas 3 characters.';
             formIsValid = false;
         }
@@ -45,7 +52,7 @@ var ManageAuthorPage = React.createClass({
     },
 
     setAuthorState: function (event) {
-        this.setState({dirty:true});
+        this.setState({dirty: true});
         var field = event.target.name;
         var value = event.target.value;
         this.state.author[field] = value;
@@ -55,12 +62,12 @@ var ManageAuthorPage = React.createClass({
     saveAuthor: function (event) {
         event.preventDefault();
 
-        if(!this.authorFormValidation()){
+        if (!this.authorFormValidation()) {
             return;
         }
         AuthorApi.saveAuthor(this.state.author);
         toastr.success('Author Saved.');
-        this.setState({dirty:false});
+        this.setState({dirty: false});
         this.transitionTo('authors');
     },
 
